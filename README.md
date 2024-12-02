@@ -1,42 +1,45 @@
-Aviator Predictor
-!! Warning !!
+
+# Aviator Predictor
+
+**!! Warning !!**  
 This project is for informational purposes only. Do not trust this project to invest your money or make financial decisions. It is a personal project created in free time, and I am not responsible for any losses incurred.
 
-Project Description
-The Aviator Predictor project aims to forecast the next possible multiplier in the online game Aviator. In this game, players predict the optimal moment to cash out before the plane "takes off." The multiplier starts at 1x and steadily increases as the plane ascends.
+## Project Description
+
+The **Aviator Predictor** project aims to forecast the next possible multiplier in the online game *Aviator*. In this game, players predict the optimal moment to cash out before the plane "takes off." The multiplier starts at 1x and steadily increases as the plane ascends.
 
 This project predicts whether the next multiplier will be:
+- **L** (less than 2x)
+- **M** (between 2x and 10x)
+- **H** (greater than 10x)
 
-L (less than 2x)
-M (between 2x and 10x)
-H (greater than 10x)
-How to Use the Project
-Download and Extract
+## How to Use the Project
 
-Download the zip file of this repository and extract it.
-Open the project folder in your preferred Python code editor.
-Set Up Environment
+1. **Download and Extract**
+   - Download the zip file of this repository and extract it.
+   - Open the project folder in your preferred Python code editor.
 
-Create a virtual environment (recommended).
+2. **Set Up Environment**
+   - Create a virtual environment (recommended).
+   - Install the required libraries using the following command:
 
-Install the required libraries using the following command:
+     ```bash
+     pip3 install pandas opencv-python pytesseract
+     ```
 
-bash
-Copy code
-pip3 install pandas opencv-python pytesseract  
-Run the Code
+3. **Run the Code**
+   - Open `main.py` in your editor and run the file.
+   - Place the *Aviator* game page and the program output (window or terminal) side by side.
 
-Open main.py in your editor and run the file.
-Place the Aviator game page and the program output (window or terminal) side by side.
-Predict the Multiplier
+4. **Predict the Multiplier**
+   - Enter the latest multiplier shown in the Aviator game when prompted.
+   - The program will predict the next multiplier.
 
-Enter the latest multiplier shown in the Aviator game when prompted.
-The program will predict the next multiplier.
-Sample Output
-If you input a multiplier value of 1.9, the output might look like this:
+### Sample Output
 
-plaintext
-Copy code
+If you input a multiplier value of `1.9`, the output might look like this:
+
+```plaintext
 Image saved as ./dataset/Captured_image.png  
 Start DroidCam  
 moDbierd hote  
@@ -71,15 +74,19 @@ result(6) : L
 LLMMMMHMH-(9)  
 
 Dataset length: 9031  
-1.9 - L  
+1.9 - L
+```
+
 In this example:
+- The predicted value is **L** (less than 2x), as all metrics (`sum(3)`, `highest(7)`, `result(6)`) indicate the same value, **L**.
 
-The predicted value is L (less than 2x), as all metrics (sum(3), highest(7), result(6)) indicate the same value, L.
-Troubleshooting
-Webcam or Image Capture Errors
+---
 
-If you encounter an error related to the webcam or image capture, update the webcam_id value in main.py:
-Change webcam_id = 1 to webcam_id = 0 (line 11).
-Contact
+## Troubleshooting
 
-For queries or support, feel free to contact me.
+1. **Webcam or Image Capture Errors**
+   - If you encounter an error related to the webcam or image capture, update the `webcam_id` value in `main.py`:
+     - Change `webcam_id = 1` to `webcam_id = 0` (line 11).
+
+2. **Contact**
+   - For queries or support, feel free to contact me.
