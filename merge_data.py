@@ -16,6 +16,7 @@ def find_common(row_i, row_j):
                         return row_i[i:]
     return ' '
 
+
 # Function to merge two rows if they have 3 or more common values
 def merge_two_rows(row_i, row_j):
     common_values = find_common(row_i, row_j)

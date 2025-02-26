@@ -5,7 +5,7 @@ from find_pattern import predict
 df = pd.read_csv('./dataset./levels.csv', header=None)
 
 
-def clear_terminal(sec):
+def print_output(sec):
     sys.stdout.write('\r' + ' ' + '\r')
     print(sec, end='', flush=True)
 
@@ -16,7 +16,7 @@ def count_down(sec):
         time.sleep(1)
         sec = str(int(sec) - 1)
         # Clear the 'Thank you' message (move cursor to start of line, print spaces to overwrite)
-        clear_terminal(sec)
+        print_output(sec)
 
 
 def train_dataset():
@@ -32,7 +32,7 @@ def train_dataset():
             predict(pattern_list, drop_index=index)
             length = len(pattern_list) - 5
             print(f'{length}/{len(row_list)}', end='', flush=True)
-            clear_terminal(f'{length}/{len(row_list) - 5}')
+            print_output(f'{length}/{len(row_list) - 5}')
         print()
         count_down(2)
 
@@ -40,6 +40,7 @@ def train_dataset():
 def train():
     while True:
         train_dataset()
+
 
 if __name__ == "__main__":
     train_dataset()

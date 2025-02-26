@@ -40,8 +40,7 @@ def score_board(result, key, path, mode):
         #     col = len(pat)
         for col in range(1, len(a)):
             letter = 'a'
-            # print(letter, col, a[col], end=' - ')
-            if a[col] == key or (a[col] != 'L' and key != 'L' and a[col] != 'a'):
+            if a[col] == key:  # or (a[col] != "a" and a[col] == "L" and key == "H"):
                 df.iloc[row - 1, col] = int(df.iloc[row - 1, col]) + 1
                 prob.loc[0, 'right_count'] += 1
                 prob.loc[0, 'total'] += 1
@@ -54,16 +53,23 @@ def score_board(result, key, path, mode):
             # else:
             #     print('No')
             # max_key = max(values, key=values.get)
-        max_key = max(result['highest'], key=result['highest'].get)
-        df.iloc[row, result['result'][max_key]] = max_key  # If it exists, increment the value;
+
+        max_key = max(result, key=lambda k: abs(result[k]))
+        if result[max_key] > 0:
+            result_key = "H"
+        else:
+            result_key = "L"
+        df.iloc[row, len(max_key)] = result_key  # If it exists, increment the value;
         prob.loc[0, 'probability'] = round(prob.loc[0, 'right_count'] / prob.loc[0, 'total'] * 100, 2)
         prob.to_csv('./dataset/probability.csv', index=False, mode='w')
     else:
+        result_key = ""
         for pat, values in result.items():
             col = len(pat)
             if pat != 'sum' and pat != 'highest' and pat != 'result':
                 multiplier = df.iloc[row - 1, col]
-                for k in values:
-                    result[pat][k] *= int(multiplier)
+                result[pat] *= int(multiplier)
+                # for k in values:
+                #     result[pat][k] *= int(multiplier)
     df.to_csv(path, index=False)
-    return result, max_score_index
+    return result, result_key
